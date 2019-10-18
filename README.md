@@ -3,10 +3,13 @@
  //usage two
  
 //        CrashUI.getInstance().listen(this);
+
 //        CrashUI.getInstance().report();
 
   //usage one
-  CrashUI.getInstance().work(this);
+
+CrashUI.getInstance().work(this);
   
   //test
-  CrashUI.getInstance().dotest("123");
+
+CrashUI.getInstance().dotest("123");
