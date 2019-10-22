@@ -1,5 +1,5 @@
 # CrashUI
-# Android debug tool & Android UI tool //Android 调试工具 Android UI 工具
+# Android debug tool & Android UI tool 调试 & UI
 # 预览 http://t.cn/Ai3R21Gx
  //usage two
  
