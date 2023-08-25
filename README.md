@@ -2,7 +2,8 @@
 # Android debug tool & Android UI component
 # 调试 & UI
 # 预览 
-https://github.com/litliang/CrashUI/blob/master/crashui_preview.jpg
+![](https://github.com/litliang/CrashUI/blob/master/crashui_preview.jpg)
+
  //usage one 用法一
  
 CrashUI.getInstance().listen(this);
