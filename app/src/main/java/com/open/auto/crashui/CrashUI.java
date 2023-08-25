@@ -22,6 +22,7 @@ public class CrashUI implements UncaughtExceptionHandler {
     private Context mContext;
     //open or close this func
     private boolean debug = true;
+    private int highlightColor = Color.RED;
 
 
     private CrashUI() {
@@ -77,7 +78,7 @@ public class CrashUI implements UncaughtExceptionHandler {
     public void uncaughtException(Thread arg0, Throwable arg1) {
         if (debug) {
             String result = getError(arg1);
-            WriteFileUtil.writeTxtToFile(result, StorageUtil.getPrimaryStoragePath(mContext), "log.d");
+            WriteFileUtil.writeTxtToFile(result, StorageUtil.getPrimaryStoragePath(mContext)+"/log", "log.d");
             System.exit(0);
         }
 
@@ -85,8 +86,7 @@ public class CrashUI implements UncaughtExceptionHandler {
 
 
     public String getError(Throwable arg1) {
-        String errorMsg = "界面： "
-                + "\n";
+        String errorMsg = "";
         errorMsg += "原因：" + arg1.getMessage() + "\n" + "\n\n";
         String result = "";
         try {
@@ -135,8 +135,7 @@ public class CrashUI implements UncaughtExceptionHandler {
 
     public boolean errorDialog(String out) {
         if (TextUtils.isEmpty(out)) {
-            out = ReadFileUtil.readsd(mContext, StorageUtil.getPrimaryStoragePath(mContext) + "/log.d");
-
+            out = ReadFileUtil.readsd(mContext, StorageUtil.getPrimaryStoragePath(mContext) + "/log/log.d");
         }
         Logs.i("---------- out " + out);
         if (out.equals("")) {
@@ -144,7 +143,7 @@ public class CrashUI implements UncaughtExceptionHandler {
             return false;
         }
         SpannableStringBuilder spannable = new TextHighLightDecorator(
-                Color.YELLOW).setMatcher(mContext.getPackageName())
+                highlightColor).setMatcher(mContext.getPackageName())
                 .getDecorated(out, out, out);
         DialogUtil.DialogInfo dialogInfo = new DialogUtil.DialogInfo(this.currActy);
         dialogInfo.aty = this.currActy;
@@ -168,7 +167,7 @@ public class CrashUI implements UncaughtExceptionHandler {
             }
         };
         DialogUtil.showChoiceDialog(dialogInfo, true).show();
-        WriteFileUtil.writeTxtToFile("", StorageUtil.getPrimaryStoragePath(mContext), "log.d");
+        WriteFileUtil.writeTxtToFile("", StorageUtil.getPrimaryStoragePath(mContext)+"/log", "log.d");
         reportedtest = true;
         return true;
     }
