@@ -6,9 +6,9 @@
 
  //usage one 用法一
  
-CrashUI.getInstance().listen(this);
+CrashUI.getInstance().init(this);
 
-CrashUI.getInstance().report();
+CrashUI.getInstance().errorDialog();
 
   //usage two 用法二
 
@@ -17,4 +17,3 @@ CrashUI.getInstance().work(this);
   //test. add extra call to test 添加额外语句测试
 
 CrashUI.getInstance().dotest("123");
-
